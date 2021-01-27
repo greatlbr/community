@@ -4,7 +4,7 @@ import com.comm.community.model.User;
 import lombok.Data;
 
 @Data
-public class QuestionDTO {
+public class QuestionDTO {//丰富了一个对象，有user的模型
     private Integer id;
     private String title;
     private String description;

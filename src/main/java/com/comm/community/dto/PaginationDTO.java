@@ -16,18 +16,20 @@ public class PaginationDTO {
     private List<Integer> pages = new ArrayList<>();
     private Integer totalPage;
 
-    public void setPagination(Integer totalCount, Integer page, Integer size) {
+//    public void setPagination(Integer totalCount, Integer page, Integer size) {
+    public void setPagination(Integer totalPage, Integer page) {////////////////////////////////
 
-        if (totalCount % size ==0){
-            totalPage = totalCount /size;
-        }else totalPage = totalCount /size +1;
-
-        if (page<1){
-            page = 1;
-        }
-        if (page>totalPage){
-            page = totalPage;
-        }
+        this.totalPage = totalPage;///////////////////////////////
+        //if (totalCount % size ==0){
+        //    totalPage = totalCount /size;
+        //}else totalPage = totalCount /size +1;
+//
+        //if (page<1){
+        //    page = 1;
+        //}
+        //if (page>totalPage){
+        //    page = totalPage;
+        //}
 
         this.page = page;
         //视频P26,about40min

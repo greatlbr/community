@@ -23,6 +23,11 @@ body{
     color: #999;
 }
 
-.profile .section{
+.profile .sections{
     margin-top: 15px;
+}
+
+.community-menu {
+    color: #999;
+    font-size: 14px;
 }

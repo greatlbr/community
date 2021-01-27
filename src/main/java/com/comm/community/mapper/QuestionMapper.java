@@ -1,10 +1,8 @@
 package com.comm.community.mapper;
 
+import com.comm.community.dto.QuestionDTO;
 import com.comm.community.model.Question;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,6 +22,13 @@ public interface QuestionMapper {
     @Select("select * from question where creator= #{userId} limit #{offset},#{size}")
     List<Question> listByUserId(@Param(value = "userId") Integer userId, @Param(value = "offset") Integer offset, @Param(value = "size") Integer size);
 
+    //@Select("select count(1) from question where account_id= #{userId}")
     @Select("select count(1) from question where creator= #{userId}")
     Integer countByUserId(@Param(value = "userId") Integer userId);
+
+    @Select("select * from question where id= #{Id}")
+    Question getById(@Param(value = "Id") Integer id);
+
+    @Update("update question set title = #{title}, description = #{description}, gmt_modified = #{gmtModified}, tag = #{tag} where id = #{id}")
+    void update(Question question);
 }
