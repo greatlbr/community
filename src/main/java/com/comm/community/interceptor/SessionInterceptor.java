@@ -3,6 +3,7 @@ package com.comm.community.interceptor;
 import com.comm.community.mapper.UserMapper;
 import com.comm.community.model.User;
 import com.comm.community.model.UserExample;
+import com.comm.community.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,11 +19,13 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired(required=false)
     private UserMapper userMapper;
+    @Autowired
+    private NotificationService notificationService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Cookie[] cookies = request.getCookies();
-        if (cookies != null && cookies.length != 0) {
+        if (cookies != null && cookies.length != 0) {//访问需要拦截的页面时
             //-->深入理解机制以后可以用redis
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("token")) {
@@ -34,6 +37,8 @@ public class SessionInterceptor implements HandlerInterceptor {
                     List<User> users = userMapper.selectByExample(userExample);
                     if (users.size() != 0) {
                         request.getSession().setAttribute("user", users.get(0));
+                        Long unreadCount = notificationService.unreadCount(users.get(0).getId());
+                        request.getSession().setAttribute("unreadCount",unreadCount);
                     }
                     break;
                 }

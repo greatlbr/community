@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>AT中文社区</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/static/js/jquery-3.5.1.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+<div th:insert="~{navigation :: nav}"></div>
+<div class="jumbotron">
+    <h1>error</h1>
+    <p th:text="${message}">error</p>
+    <p><a class="btn btn-primary btn-lg" href="/" role="button">返回主页</a></p>
+</div>
+<div th:insert="~{footer :: foot}"></div>
+</body>
+</html>

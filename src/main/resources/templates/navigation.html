@@ -6,15 +6,15 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">AT中文社区</span>
+                    <span class="sr-only">AT@中文社区</span>
                 </button>
-                <a class="navbar-brand" href="/">AT中文社区</a>
+                <a class="navbar-brand" href="/">AT@中文社区</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-left">
+                <form class="navbar-form navbar-left" action="/" method="get">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="搜索话题">
+                        <input type="text" class="form-control" name="search" placeholder="搜索话题">
                     </div>
                     <button type="submit" class="btn btn-default">搜索</button>
                 </form>
@@ -22,6 +22,7 @@
                     <li th:if="${session.user!=null}">
                         <a href="/publish">提问</a>
                     </li>
+                    <li><a href="/profile/replies">通知<span class="badge" th:text="${session.unreadCount}"></span></a></li>
                     <li class="dropdown" th:if="${session.user != null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <span th:text="${session.user.getName()}"></span>
@@ -33,7 +34,7 @@
                         </ul>
                     </li>
                     <li th:if="${session.user == null}">
-                        <a href="https://github.com/login/oauth/authorize?client_id=b36e30eef1e254e093f0&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登陆</a>
+                        <a href="https://github.com/login/oauth/authorize?client_id=b66636e30eef1e254e093f0&redirect_uri=http://localhost:8887/callback&scope=user&state=1">登陆</a>
                     </li>
                 </ul>
             </div>
