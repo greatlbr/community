@@ -38,13 +38,13 @@ public class QuestionService {
     @Autowired(required=false)
     private QuestionExtMapper questionExtMapper;
 
-    public PaginationDTO list(String search, Integer page, Integer size) {
+    public PaginationDTO list(String search, String tag, Integer page, Integer size) {
 
         if(StringUtils.isNotBlank(search)){//这种情况不存在，只是加一个额外的验证
             String[] tags = StringUtils.split(search," ");
             search = Arrays.stream(tags).collect(Collectors.joining("|"));
-
         }
+
 
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
@@ -52,6 +52,8 @@ public class QuestionService {
 
         QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
         questionQueryDTO.setSearch(search);
+        questionQueryDTO.setTag(tag);//热门话题标签
+
         Integer totalCount = questionExtMapper.countBySearch(questionQueryDTO);//p34:56.17
 
         if (totalCount % size ==0){
@@ -68,7 +70,7 @@ public class QuestionService {
 
         paginationDTO.setPagination(totalPage, page);
 
-        Integer offset = size * (page - 1);
+        Integer offset = page < 1 ? 0 : size * (page - 1);//page小于1就让page=1
 
         QuestionExample questionExample = new QuestionExample();
         questionExample.setOrderByClause("gmt_create desc");//把首页话题按时间倒叙排序

@@ -6,6 +6,7 @@ import com.comm.community.mapper.UserMapper;
 import com.comm.community.model.User;
 import com.comm.community.provider.GithubProvider;
 import com.comm.community.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.util.UUID;
 //import org.springframework.ui.Model;
 
 @Controller
+@Slf4j
 public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
@@ -61,6 +63,7 @@ public class AuthorizeController {
             //登陆成功， 写cookie 和session
             return "redirect:/";//已经写入token，所以访问首页时需要把Cookie里key为token的信息拿到，然后去数据库中查询看数据库中是否存在，以此来验证是否登录成功
         }else{
+            log.error("callback get github,{}",githubUser);
             //重新登陆
             return "redirect:/";
         }
