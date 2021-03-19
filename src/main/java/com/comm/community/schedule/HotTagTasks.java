@@ -48,17 +48,6 @@ public class HotTagTasks {
             }
             offset += limit;
         }
-        //hotTagCache.setTags(priorities);
-
-        /*priorities.forEach(
-                (k, v) ->{
-                    System.out.print(k);
-                    System.out.print(":");
-                    System.out.println(v);
-                    //System.out.println();
-                }
-        );*/
-
         hotTagCache.updateTags(priorities);
     }
 }

@@ -10,7 +10,9 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode{//定义接口形�
     CONTENT_IS_EMPTY(2007,"输入内容不能为空"),
     READ_NOTIFICATION_FAIL(2008,"当前读取的是别的用户的信息"),
     NOTIFICATION_NOT_FOUND(2009,"通知找不到"),
-    FILE_UPLOAD_FAIL(2010,"图片上传error");
+    FILE_UPLOAD_FAIL(2010,"图片上传error"),
+    Unlike_article_not_exist(0005, "该文章未被当前用户点赞"),
+    Like_article_is_exist(0006, "该文章已被当前用户点赞，重复点赞");
     @Override
     public String getMessage(){
         return message;

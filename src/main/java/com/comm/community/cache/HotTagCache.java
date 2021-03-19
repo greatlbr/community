@@ -32,7 +32,6 @@ public class HotTagCache {//还可以附加关注量和回复量
             }
         });
 
-
         List<String> sortedTags = new ArrayList<>();
 
         HotTagDTO poll = priorityQueue.poll();
