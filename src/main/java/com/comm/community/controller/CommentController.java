@@ -31,7 +31,6 @@ public class CommentController {
         }
 
         //验证
-        //if (commentCreateDTO == null || commentCreateDTO.getContent()==null || commentCreateDTO.getContent() == ""){
         if (commentCreateDTO == null || StringUtils.isBlank(commentCreateDTO.getContent())){
             return ResultDTO.errorOf(CustomizeErrorCode.CONTENT_IS_EMPTY);
         }

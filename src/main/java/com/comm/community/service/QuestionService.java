@@ -106,15 +106,9 @@ public class QuestionService {
             totalPage = totalCount /size;
         }else totalPage = totalCount /size +1;
 
-        //paginationDTO.setPagination(totalCount, page, size);
-
         if (page<1){
             page = 1;
         }
-
-        //if (page > paginationDTO.getTotalPage()){/////////////////////
-        //    page = paginationDTO.getTotalPage();/////////////////////
-        //}/////////////////////
 
         if (page > totalPage){
             page = totalPage;

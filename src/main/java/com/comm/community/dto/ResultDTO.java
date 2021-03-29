@@ -41,5 +41,4 @@ public class ResultDTO<T> {//错误信息全都封装在枚举类，增加可重
         resultDTO.setData(t);
         return resultDTO;
     }
-
 }

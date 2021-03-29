@@ -48,6 +48,7 @@ public class PublishController {
             HttpServletRequest request,
             Model model
     ){
+        //@RequestParam用于和页面的参数绑定，接收前端的参数 //当页面传递的参数名与方法的参数名不一致的时候,使用RequestParam注解
         model.addAttribute("title",title);
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
